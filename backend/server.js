@@ -15,6 +15,10 @@ app.use('/auth', authLogin);
 const authTokenVerify = require('./controllers/auth/tokenVerify');
 app.use('/auth', authTokenVerify);
 
+// Use the passwordRecovery route
+const passwordRecovery = require('./controllers/auth/passwordRecovery');
+app.use('/auth', passwordRecovery);
+
 app.use(cors());
 // Handle a GET request for the root path ("/") with "Hello, World!"
 app.get('/', (req, res) => {

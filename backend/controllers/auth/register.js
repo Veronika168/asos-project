@@ -11,7 +11,6 @@ router.use(bodyParses());
 // Provide the correct path to your existing SQLite database file
 const db = new sqlite3.Database('././asosDatabase.db');
 
-
 router.post('/register', async (req, res) => {
     console.log(req.body)
     const { username, email, password, passwordCheck } = req.body;
@@ -22,6 +21,21 @@ router.post('/register', async (req, res) => {
 
     if (password !== passwordCheck) {
         return res.status(400).json({ message: 'Passwords do not match' });
+    }
+
+    let passwordChecks = checkPassword(password)
+
+    if (passwordChecks.isLengthValid === false){
+        return res.status(400).json({ message: 'Password must have 12 or more chars' });
+    }
+    if(passwordChecks.hasUpperCase === false){
+        return res.status(400).json({ message: 'Password must have at least 1 upper case char' });
+    }
+    if(passwordChecks.hasLowerCase === false){
+        return res.status(400).json({ message: 'Password must have at least 1 lower case char' });
+    }
+    if(passwordChecks.hasNumber === false){
+        return res.status(400).json({ message: 'Password must have at least 1 number' });
     }
 
     // Check if the username or email already exists
@@ -56,6 +70,20 @@ router.post('/register', async (req, res) => {
         });
     });
 });
+
+function checkPassword(password){
+    const isLengthValid = password.length >= 12
+    const hasUpperCase = /[A-Z]/.test(password)
+    const hasLowerCase = /[a-z]/.test(password)
+    const hasNumber = /\d/.test(password)
+
+    return{
+        isLengthValid,
+        hasUpperCase,
+        hasLowerCase,
+        hasNumber
+    };
+}
 
 
 module.exports = router;

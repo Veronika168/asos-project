@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useNavigate, useLocation} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/login.css'; // Import your CSS file for styling
 
 function Login() {
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
-    // TODO - Obnova hesla, pravdepodobne nový page
+    const registrationSuccess = location.state?.registrationStatus;
+    const passwordResetSuccess = location.state?.passwordResetStatus;
 
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
@@ -32,8 +35,9 @@ function Login() {
                 localStorage.setItem('authToken', authToken);
                 navigate("/homepage")
             } else {
-                // TODO - Odpoveď od servera spracovať
-                console.log(response)
+                const errorData = await response.json();
+                console.log(errorData.message)
+                setErrorMessage(errorData.message)
             }
         } catch (error) {
             console.error('Error:', error);
@@ -65,10 +69,26 @@ function Login() {
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
                             </div>
+                            <div>
+                                {errorMessage && <p style={{color: "red"}}>{errorMessage}</p>}
+                            </div>
+                            <div>
+                                {registrationSuccess && <p style={{color: "green"}}>Registration was successful!</p>}
+                            </div>
+                            <div>
+                                {passwordResetSuccess && <p style={{color: "green"}}>Password reset was successful!</p>}
+                            </div>
                             <button type="submit" className="btn btn-primary">Login</button>
-                            <Link to="/register">
-                                <button className="btn btn-secondary">SignUp</button>
-                            </Link>
+                            <div>
+                                <Link to="/register">
+                                    <button className="btn btn-secondary">SignUp</button>
+                                </Link>
+                            </div>
+                            <div>
+                                <Link to="/passwordrecovery">
+                                    <button className="btn btn-secondary">Password Recovery</button>
+                                </Link>
+                            </div>
                         </form>
                     </div>
                 </div>
