@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
 import {isAuth} from "../auth/authUtils";
-// import "../styles/header.css"; // Import your CSS file for styling
+import '../styles/auth.css'; // Ensure to import your CSS file
 
 function Homepage() {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/header.css";
-import { Link, useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 function Header() {
     const navigate = useNavigate();
@@ -18,9 +18,21 @@ function Header() {
         if (authToken) {
             // User is authenticated, render a logout button
             return (
-                <button onClick={handleLogout} className="btn btn-primary">
-                    Logout
-                </button>
+                <div>
+                    <Link to="/tokens">
+                        <button type="submit" className="btn btn-primary">
+                            Tokens
+                        </button>
+                    </Link>
+                    <Link to="/homepage">
+                        <button type="submit" className="btn btn-primary">
+                            Homepage
+                        </button>
+                    </Link>
+                    <button onClick={handleLogout} className="btn btn-primary">
+                        Logout
+                    </button>
+                </div>
             );
         } else {
             // User is not authenticated, render login and register buttons

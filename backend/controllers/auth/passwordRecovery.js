@@ -50,7 +50,7 @@ router.post('/api/password-reset', async (req, res) => {
 });
 
 router.post('/api/reset-password', async (req, res) => {
-    const { email, verificationCode, newPassword } = req.body;
+    const { email, verificationCode, newPassword, newPasswordCheck } = req.body;
 
     try {
         db.get(`
@@ -88,6 +88,9 @@ router.post('/api/reset-password', async (req, res) => {
                 }
                 if(passwordChecks.hasNumber === false){
                     return res.status(400).json({ message: 'Password must have at least 1 number' });
+                }
+                if (newPassword !== newPasswordCheck){
+                    return res.status(400).json({ message: 'Passwords are not the same' });
                 }
 
                 // Hash the password

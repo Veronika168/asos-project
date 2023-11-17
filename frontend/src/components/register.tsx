@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/register.css'; // Import your CSS file for styling
+import '../styles/auth.css'; // Import your CSS file for styling
 
 function Register() {
 

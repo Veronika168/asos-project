@@ -16,6 +16,8 @@
     "jsonwebtoken": "^9.0.2",
     "mysql": "^2.18.1",
     "nodemailer": "^6.9.7",
-    "sqlite3": "^5.1.6"
+    "sqlite3": "^5.1.6",
+    "twitter-api-sdk": "^1.2.1",
+    "twitter-api-v2": "^1.15.2"
   }
 }

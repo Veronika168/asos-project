@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Link, useNavigate, useLocation} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/login.css'; // Import your CSS file for styling
+import '../styles/auth.css'; // Import your CSS file for styling
 
 function Login() {
     const navigate = useNavigate();

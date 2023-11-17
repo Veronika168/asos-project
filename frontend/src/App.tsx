@@ -5,6 +5,7 @@ import Footer from "./components/footer";
 import Login from "./components/login";
 import Register from "./components/register";
 import Homepage from "./components/homepage";
+import ApiTokens from "./components/apiTokens";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PasswordRecovery from "./components/PasswordRecovery";
 
@@ -20,6 +21,7 @@ function App() {
                         <Route path="/register" element={<Register />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/homepage" element={<Homepage />} />
+                        <Route path="/tokens" element={<ApiTokens/>} />
                         <Route path="*" element={<Homepage />} />
                         <Route path="/passwordrecovery" element={<PasswordRecovery/>} />
                     </Routes>
