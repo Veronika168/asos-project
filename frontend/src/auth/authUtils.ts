@@ -16,7 +16,7 @@ async function isAuth() {
             });
 
             if (response.ok) {
-                return true;
+                return response.json();
             } else {
                 console.log(response);
                 return false;

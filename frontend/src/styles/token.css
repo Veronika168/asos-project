@@ -1,8 +1,9 @@
 .container-token {
-    display: flex;
+    display: inline-grid;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 24px;
 }
 
 .token-frame {

@@ -21,6 +21,40 @@ db.serialize(() => {
             expiration_time DATETIME
         );
     `);
+
+    db.run(`
+        CREATE TABLE youtubeApi (
+            id INTEGER PRIMARY KEY,
+            user_id INTEGER REFERENCES users,
+            api_token VARCHAR NOT NULL,
+            views VARCHAR NOT NULL DEFAULT '0',
+            subs VARCHAR NOT NULL DEFAULT '0',
+            videoCount VARCHAR NOT NULL DEFAULT '0'
+        );
+    `);
+
+    db.run(`
+        CREATE TABLE facebookApi (
+            id INTEGER PRIMARY KEY,
+            user_id INTEGER REFERENCES users,
+            api_token VARCHAR NOT NULL,
+            likes VARCHAR NOT NULL DEFAULT '0',
+            comments VARCHAR NOT NULL DEFAULT '0',
+            shares VARCHAR NOT NULL DEFAULT '0',
+            followers VARCHAR NOT NULL DEFAULT 'O'
+        );
+    `);
+
+    db.run(`
+        CREATE TABLE facebookApi (
+            id INTEGER PRIMARY KEY,
+            user_id INTEGER REFERENCES users,
+            api_token VARCHAR NOT NULL,
+            impressions VARCHAR NOT NULL DEFAULT '0',
+            profileViews VARCHAR NOT NULL DEFAULT '0',
+            followers VARCHAR NOT NULL DEFAULT '0'
+        );
+    `);
 });
 
 db.close();

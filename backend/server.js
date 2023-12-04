@@ -19,6 +19,15 @@ app.use('/auth', authTokenVerify);
 const passwordRecovery = require('./controllers/auth/passwordRecovery');
 app.use('/auth', passwordRecovery);
 
+const youtubeApi = require('./controllers/externalApi/youtubeApi');
+app.use('/api', youtubeApi);
+
+const facebookApi = require('./controllers/externalApi/facebookApi');
+app.use('/api', facebookApi);
+
+const instagramApi = require('./controllers/externalApi/instagramApi');
+app.use('/api', instagramApi);
+
 app.use(cors());
 // Handle a GET request for the root path ("/") with "Hello, World!"
 app.get('/', (req, res) => {
