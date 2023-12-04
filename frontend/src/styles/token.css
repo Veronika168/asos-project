@@ -7,10 +7,10 @@
 }
 
 .token-frame {
-    border: 2px solid #ccc;
+    /*border: 2px solid #ccc;*/
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     background-color: #f9f9f9;
 }
 
@@ -19,7 +19,7 @@
     background-color: #f0f0f0;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .login-form h2 {
@@ -48,10 +48,11 @@
 .btn-secondary {
     margin: 12px;
     color: #ffffff;
-    background-color: #3a3a3a;
-    border-color: #3a3a3a;
+    background-color: #1e202a;
+    border-color: #1e202a;
     font-family: Garamond, serif;
     transition: background-color 0.3s, color 0.3s; /* Smooth transition on hover */
+
 
     /* Hover styles */
     &:hover {

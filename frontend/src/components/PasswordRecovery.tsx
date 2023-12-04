@@ -1,6 +1,6 @@
 // PasswordRecovery.js
 
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import '../styles/auth.css'; // Ensure to import your CSS file
 
@@ -23,7 +23,7 @@ const PasswordRecovery = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email }),
+                body: JSON.stringify({email}),
             });
 
             if (response.ok) {
@@ -50,12 +50,12 @@ const PasswordRecovery = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, verificationCode, newPassword, newPasswordCheck}),
+                body: JSON.stringify({email, verificationCode, newPassword, newPasswordCheck}),
             });
 
             if (response.ok) {
                 console.log("OK RESPONSE")
-                navigate("/login", {state : {passwordResetStatus : true }})
+                navigate("/login", {state: {passwordResetStatus: true}})
             } else {
                 const errorData = await response.json();
                 // console.log(errorData.message)
@@ -84,7 +84,7 @@ const PasswordRecovery = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                             <button onClick={requestPasswordReset} className="btn btn-primary">
-                                Request Password Reset
+                                Password Reset
                             </button>
                         </>
                     ) : (
@@ -120,14 +120,15 @@ const PasswordRecovery = () => {
                     )}
                     {/* Other elements from your existing login form */}
                     {/* ... */}
+
                     <div>
-                        <Link to="/register" className="btn btn-secondary">
-                            SignUp
+                        <Link to="/login" className="btn btn-secondary">
+                            Login
                         </Link>
                     </div>
                     <div>
-                        <Link to="/passwordrecovery" className="btn btn-secondary">
-                            Password Recovery
+                        <Link to="/register" className="btn btn-secondary">
+                            Register
                         </Link>
                     </div>
                 </div>

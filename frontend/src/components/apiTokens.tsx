@@ -3,7 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {useNavigate} from 'react-router-dom';
 import {isAuth} from '../auth/authUtils';
 import '../styles/token.css';
-import axios from "axios"; // Ensure to import your CSS file
+import DeleteIcon from "@mui/icons-material/Delete";
+import axios from "axios";
+import {Box} from "@mui/material"; // Ensure to import your CSS file
 
 function ApiTokens() {
     const navigate = useNavigate();
@@ -173,14 +175,20 @@ function ApiTokens() {
                             </button>
                         </form>
 
-                        <button onClick={handleDeleteYt} className="btn btn-danger">
-                            Delete YouTube API Data
-                        </button>
+                        <Box display={'flex'} justifyContent={'center'}>
+                            <Box ml={0.5} mr={0.5}>
+                                <button onClick={handleDeleteYt} className="btn btn-danger">
+                                    <DeleteIcon/>
+                                </button>
+                            </Box>
+                            <Box ml={0.5} mr={0.5}>
+                                {/* Tlačidlo pre získanie statusu YouTube API */}
+                                <button onClick={handleGetYtStatus} className="btn btn-info">
+                                    Status
+                                </button>
+                            </Box>
+                        </Box>
 
-                        {/* Tlačidlo pre získanie statusu YouTube API */}
-                        <button onClick={handleGetYtStatus} className="btn btn-info">
-                            Status
-                        </button>
 
                         <div>
                             {errorMessageYt && <p style={{color: "red"}}>{errorMessageYt}</p>}
@@ -222,14 +230,19 @@ function ApiTokens() {
                             </button>
                         </form>
 
-                        <button onClick={handleSubmitFb} className="btn btn-danger">
-                            Delete Facebook API Data
-                        </button>
-
-                        {/* Tlačidlo pre získanie statusu YouTube API */}
-                        <button onClick={handleSubmitFb} className="btn btn-info">
-                            Status
-                        </button>
+                        <Box display={'flex'} justifyContent={'center'}>
+                            <Box ml={0.5} mr={0.5}>
+                                <button onClick={handleSubmitFb} className="btn btn-danger">
+                                    <DeleteIcon/>
+                                </button>
+                            </Box>
+                            <Box ml={0.5} mr={0.5}>
+                                {/* Tlačidlo pre získanie statusu YouTube API */}
+                                <button onClick={handleSubmitFb} className="btn btn-info">
+                                    Status
+                                </button>
+                            </Box>
+                        </Box>
 
                         <div>
                             {errorMessageFb && <p style={{color: "red"}}>{errorMessageFb}</p>}
@@ -271,14 +284,19 @@ function ApiTokens() {
                             </button>
                         </form>
 
-                        <button onClick={handleSubmitIg} className="btn btn-danger">
-                            Delete Instagram API Data
-                        </button>
-
-                        {/* Tlačidlo pre získanie statusu YouTube API */}
-                        <button onClick={handleSubmitIg} className="btn btn-info">
-                            Status
-                        </button>
+                        <Box display={'flex'} justifyContent={'center'}>
+                            <Box ml={0.5} mr={0.5}>
+                                <button onClick={handleSubmitIg} className="btn btn-danger">
+                                    <DeleteIcon/>
+                                </button>
+                            </Box>
+                            <Box ml={0.5} mr={0.5}>
+                                {/* Tlačidlo pre získanie statusu YouTube API */}
+                                <button onClick={handleSubmitIg} className="btn btn-info">
+                                    Status
+                                </button>
+                            </Box>
+                        </Box>
 
                         <div>
                             {errorMessageIg && <p style={{color: "red"}}>{errorMessageIg}</p>}

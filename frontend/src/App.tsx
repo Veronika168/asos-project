@@ -13,10 +13,9 @@ function App() {
 
     return (
         <Router>
-            <div className="App">
+            <div className="app light">
                 <Header />
                 <div className="centered">
-                    <h1>Stefan Gajdos</h1>
                     <Routes>
                         <Route path="/register" element={<Register />} />
                         <Route path="/login" element={<Login />} />

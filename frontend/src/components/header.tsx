@@ -1,7 +1,9 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/header.css";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import {Box, Link, Typography} from '@mui/material';
+import NavItem from "./navItem";
 
 function Header() {
     const navigate = useNavigate();
@@ -18,37 +20,30 @@ function Header() {
         if (authToken) {
             // User is authenticated, render a logout button
             return (
-                <div>
-                    <Link to="/tokens">
-                        <button type="submit" className="btn btn-primary">
-                            Tokens
-                        </button>
-                    </Link>
-                    <Link to="/homepage">
-                        <button type="submit" className="btn btn-primary">
-                            Homepage
-                        </button>
-                    </Link>
+                <Box sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+
+                }}>
+                    <NavItem url={'/homepage'} text={'Dashboard'}/>
+                    <NavItem url={'/tokens'} text={'Tokens'}/>
+
                     <button onClick={handleLogout} className="btn btn-primary">
                         Logout
                     </button>
-                </div>
+                </Box>
             );
         } else {
             // User is not authenticated, render login and register buttons
             return (
-                <div>
-                    <Link to="/login">
-                        <button type="submit" className="btn btn-primary">
-                            Login
-                        </button>
-                    </Link>
-                    <Link to="/register">
-                        <button type="submit" className="btn btn-primary">
-                            Register
-                        </button>
-                    </Link>
-                </div>
+                <Box sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+
+                }}>
+                    <NavItem url={'/login'} text={'Login'}/>
+                    <NavItem url={'register'} text={'Register'}/>
+                </Box>
             );
         }
     };
@@ -56,7 +51,8 @@ function Header() {
     return (
         <div className="header">
             <div className="header-content">
-                <div className="header-name">ASOS_PROJECT</div>
+                <div className="header-name">FLOWer</div>
+
                 <div className="header-buttons">
                     {renderButtons()}
                 </div>

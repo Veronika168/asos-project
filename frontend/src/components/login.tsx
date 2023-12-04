@@ -81,7 +81,7 @@ function Login() {
                             <button type="submit" className="btn btn-primary">Login</button>
                             <div>
                                 <Link to="/register">
-                                    <button className="btn btn-secondary">SignUp</button>
+                                    <button className="btn btn-secondary">Register</button>
                                 </Link>
                             </div>
                             <div>

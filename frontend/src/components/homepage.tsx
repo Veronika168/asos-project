@@ -2,7 +2,11 @@ import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
 import {isAuth} from "../auth/authUtils";
-import '../styles/auth.css'; // Ensure to import your CSS file
+import { Grid, Typography } from "@mui/material";
+//import '../styles/auth.css'; // Ensure to import your CSS file
+import "../styles/style.scss";
+import CardList from "./cardlist";
+import CardList2 from "./cardlist2";
 
 function Homepage() {
 
@@ -37,6 +41,7 @@ function Homepage() {
     }
 
     checkAuth();
+
     async function getYoutubeData() {
         try {
             let authToken = localStorage.getItem('authToken')
@@ -52,15 +57,15 @@ function Homepage() {
                 const data = await response.json();
                 // DATA
                 // console.log(data.youtubeInfo)
-                // console.log(data.youtubeInfo.views)
-                // console.log(data.youtubeInfo.subs)
-                // console.log(data.youtubeInfo.videoCount)
                 setYoutubeViews(data.youtubeInfo.views)
                 setYoutubeSubs(data.youtubeInfo.subs)
                 setYoutubeVideoCount(data.youtubeInfo.videoCount)
             } else {
                 const errorData = await response.json();
                 console.log(errorData.message)
+                setYoutubeViews('0')
+                setYoutubeSubs('0')
+                setYoutubeVideoCount('0')
             }
         } catch (error) {
             console.error('Error:', error);
@@ -84,10 +89,6 @@ function Homepage() {
                 const data = await response.json();
                 // DATA
                 //console.log(data.facebookInfo);
-                // console.log(data.facebookInfo.likes)
-                // console.log(data.facebookInfo.comments)
-                // console.log(data.facebookInfo.shares)
-                // console.log(data.facebookInfo.followers)
                 setFacebookLikes(data.facebookInfo.likes)
                 setFacebookComments(data.facebookInfo.comments)
                 setFacebookShares(data.facebookInfo.shares)
@@ -96,6 +97,10 @@ function Homepage() {
             } else {
                 const errorData = await response.json();
                 console.log(errorData.message);
+                setFacebookLikes('0')
+                setFacebookComments('0')
+                setFacebookShares('0')
+                setFacebookFollowers('0')
             }
         } catch (error) {
             console.error('Error:', error);
@@ -119,15 +124,15 @@ function Homepage() {
                 const data = await response.json();
                 // DATA
                 // console.log(data.instagramInfo);
-                // console.log(data.instagramInfo.impressions)
-                // console.log(data.instagramInfo.profileViews)
-                // console.log(data.instagramInfo.followers)
                 setInstagramImpressions(data.instagramInfo.impressions)
                 setInstagramProfileViews(data.instagramInfo.profileViews)
                 setInstagramFollowers(data.instagramInfo.followers)
             } else {
                 const errorData = await response.json();
                 console.log(errorData.message);
+                setInstagramImpressions('0')
+                setInstagramProfileViews('0')
+                setInstagramFollowers('0')
             }
         } catch (error) {
             console.error('Error:', error);
@@ -137,8 +142,27 @@ function Homepage() {
     getInstagramData();
 
     return (
-        <div className="container">
-            HOMEPAGE
+        <div>
+            <Grid sx={{ maxWidth: "1400px", margin: "50px auto" }}>
+                <section>
+                    <CardList data={{
+                        youtubeSubs: youtubeSubs,
+                        facebookFollowers: facebookFollowers,
+                        instagramFollowers: instagramFollowers
+                    }}/>
+                </section>
+                <section>
+                    <CardList2 data={{
+                        youtubeViews: youtubeViews,
+                        youtubeVideoCount: youtubeVideoCount,
+                        facebookLikes: facebookLikes,
+                        facebookComments: facebookComments,
+                        facebookShares: facebookShares,
+                        instagramImpressions: instagramImpressions,
+                        instagramProfileViews: instagramProfileViews
+                    }}></CardList2>
+                </section>
+            </Grid>
         </div>
     );
 }
